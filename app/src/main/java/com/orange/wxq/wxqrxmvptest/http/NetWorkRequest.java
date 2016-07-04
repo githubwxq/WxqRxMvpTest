@@ -12,10 +12,10 @@ import rx.schedulers.Schedulers;
  */
 public class NetWorkRequest {
     //将 订阅和订阅者 简单封装确定 执行流程 吊着方法里面订阅时间触发  回调给上一成的 现在只是参数抽取而已 未涉及回调
-
+  // model 的一个帮助类 把rx炒作进行了封装
     public static void getStudentInfo(String name,Subscriber<Student> subscriber ){
 
-       Network.getStudnetService()
+       Network.getStudnetService()//对不同retrofit的实现类的封装
                 .getAllStudentByName(name)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

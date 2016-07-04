@@ -13,8 +13,6 @@ public interface BaseModel<T> {
 
         void getAllStudent(DataListener.NewsDetailData call);
 
-
-
     }
 
 
