@@ -15,7 +15,8 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by Administrator on 2016/7/3.
+ * Created by wxq on 2016/7/3.
+ *管理 每个实体请求累的创建  为network 服务的
  */
 public class Network {
 
