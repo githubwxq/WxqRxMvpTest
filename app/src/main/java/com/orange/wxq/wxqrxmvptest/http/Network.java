@@ -27,7 +27,16 @@ public class Network {
     private static final Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
     private static final CallAdapter.Factory rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
 
-    public static StudentService  getStudnetService(){// 现在获取的是
+    public static <T> T getService(Class<T> clazz) {
+
+        T service = (T)getRetrofit(API.BASE_API_STUDENT).create(clazz);
+
+        return service;
+    }
+
+
+
+    public static StudentService  getStudnetService(){// 现在获取的是StudentService 变成单利
 
         if(studentService==null){
             studentService=getRetrofit(API.BASE_API_STUDENT).create(StudentService.class);
@@ -36,6 +45,7 @@ public class Network {
 
         return  studentService;
     }
+
 
     private static Retrofit getRetrofit(String baseUrl) {
 

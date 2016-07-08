@@ -10,15 +10,16 @@ import com.orange.wxq.wxqrxmvptest.mvp.bean.Student;
  */
 public class StudentModelImpl implements BaseModel.AllStudentModel {
 
-
+    // 数据获取  谁的数据获取  该获取的数据都在这边获取吧！
+// 通过接口回调    前提传入接口对象 触发方法  传入的接口对象为上层类！！！！！！！！
     @Override
-    public void getAllStudent(final DataListener.NewsDetailData call) {
+    public void getAllStudent(final DataListener.NewsDetailData call) {//执行方法 必须要有回调去获取observable最终回调拿到的数据
 
         NetWorkRequest.getStudentInfo(new MySubscriber<Student>(){
             @Override
             public void onNext(Student student) {
                 super.onNext(student);
-                call.addData(student);
+                call.addData(student); //回调数据
 
             }
 

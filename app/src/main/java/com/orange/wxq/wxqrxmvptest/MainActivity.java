@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.orange.wxq.wxqrxmvptest.http.NetWorkRequest;
 import com.orange.wxq.wxqrxmvptest.http.Network;
+import com.orange.wxq.wxqrxmvptest.http.StudentService;
 import com.orange.wxq.wxqrxmvptest.mvp.bean.Course;
 import com.orange.wxq.wxqrxmvptest.mvp.bean.Student;
 import com.orange.wxq.wxqrxmvptest.mvp.model.DataListener;
@@ -50,7 +51,10 @@ public class MainActivity extends AppCompatActivity implements BaseView.StudentI
         courses.add(a );
         stu.setCourse(courses);
 
-        Observable<Student> allStudentByObject = Network.getStudnetService().getAllStudentByObject(stu);
+       // StudentService service = Network.getService(StudentService.class);
+
+
+        Observable<Student> allStudentByObject = Network.getService(StudentService.class).getAllStudentByObject(stu);
         allStudentByObject.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<Student>() {
             @Override
             public void onCompleted() {
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements BaseView.StudentI
             @Override
             public void onNext(Student student) {
              //这是我最关心的数据 student
-                tv2.setText("tv2"+student.getAge());
+                tv2.setText("泛型tv2"+student.getAge());
             }
         });
 
@@ -102,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements BaseView.StudentI
             }
         });
     }
+
 
     @Override
     public void setStudentData(Student datas) {
